@@ -346,9 +346,12 @@ async function loadProjects() {
 }
 
 function renderProjects() {
-    const grid = document.getElementById('projectsGrid'); 
+    const grid = document.getElementById('projectsGrid'); // ← обязательно здесь
 
-    if (!grid) return;
+    if (!grid) {
+        console.error('projectsGrid не найден в HTML');
+        return;
+    }
 
     grid.innerHTML = allProjects.map(project => `
         <button class="project-card" type="button" onclick="openProjectModal(${project.id})">
