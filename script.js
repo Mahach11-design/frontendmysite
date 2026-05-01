@@ -305,7 +305,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // После деплоя backend на Render вставь сюда URL сервиса, например:
 // const API_BASE_URL = 'https://mahach-portfolio-api.onrender.com';
-const API_URL = "https://backendmysite-se57.onrender.com/api/projects";
+const API_BASE_URL = "https://backendmysite-se57.onrender.com"; 
+const response = await fetch(${API_BASE_URL}/api/projects);
 
 let allProjects = [];
 let activeProjectFilter = 'all';
