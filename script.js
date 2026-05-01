@@ -346,7 +346,11 @@ async function loadProjects() {
 }
 
 function renderProjects() {
-    grid.innerHTML = projects.map(project => `
+    const grid = document.getElementById('projectsGrid'); 
+
+    if (!grid) return;
+
+    grid.innerHTML = allProjects.map(project => `
         <button class="project-card" type="button" onclick="openProjectModal(${project.id})">
             <div class="card-glow"></div>
     
@@ -372,6 +376,7 @@ function renderProjects() {
             </div>
         </button>
     `).join('');
+}
 
 function openProjectModal(projectId) {
     const project = allProjects.find(item => String(item.id) === String(projectId));
