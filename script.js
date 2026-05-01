@@ -289,6 +289,9 @@ document.addEventListener('DOMContentLoaded', () => {
     initSmoothScroll();
     initScrollReveal();
     initCopyToClipboard();
+
+    // Загружаем проекты
+    loadProjects();
     
     // Показываем страницу с плавным появлением
     document.body.style.opacity = '0';
@@ -297,7 +300,6 @@ document.addEventListener('DOMContentLoaded', () => {
         document.body.style.opacity = '1';
     }, 100);
 });
-
 
 // ==========================================
 // ПРОЕКТЫ С BACKEND НА RENDER
@@ -337,7 +339,7 @@ async function loadProjects() {
         console.error('Ошибка загрузки проектов:', error);
         grid.innerHTML = `
             <div class="projects-error">
-                Не удалось загрузить проекты.
+                Не удалось загрузить проекты. Проверь API_BASE_URL в script.js и работу backend на Render.
             </div>
         `;
     }
@@ -365,8 +367,8 @@ function renderProjects() {
                     ${projectStatusLabels[project.status] || project.status}
                 </span>
             </div>
-            <h3>${escapeHtml(project.title)}</h3>
-            <p>${escapeHtml(project.shortDescription || project.description || '')}</p>
+            <h3>${project.title}</h3>
+            <p>${project.shortDescription || project.description || ''}</p>
         </button>
     `).join('');
 }
@@ -375,85 +377,5 @@ function openProjectModal(projectId) {
     const project = allProjects.find(item => String(item.id) === String(projectId));
     if (!project) return;
 
-    const modal = document.getElementById('projectModal');
-
-    if (!modal) {
-        alert(project.fullDescription || project.description || 'Описание не добавлено');
-        return;
-    }
-
-    document.getElementById('modalType').textContent = projectTypeLabels[project.type] || project.type;
-
-    const status = document.getElementById('modalStatus');
-    status.textContent = projectStatusLabels[project.status] || project.status;
-    status.className = `project-status status-${project.status}`;
-
-    document.getElementById('modalTitle').textContent = project.title;
-    document.getElementById('modalDescription').textContent =
-        project.fullDescription || project.description || 'Описание не добавлено';
-
-    const link = document.getElementById('modalLink');
-    if (link) {
-        if (project.link || project.url) {
-            link.href = project.link || project.url;
-            link.classList.remove('hidden');
-        } else {
-            link.classList.add('hidden');
-        }
-    }
-
-    modal.classList.add('open');
-    modal.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
+    alert(project.fullDescription || project.description || 'Описание не добавлено');
 }
-
-function closeProjectModal() {
-    const modal = document.getElementById('projectModal');
-    if (!modal) return;
-
-    modal.classList.remove('open');
-    modal.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-}
-
-function initProjectModal() {
-    document.querySelectorAll('[data-close-modal]').forEach(element => {
-        element.addEventListener('click', closeProjectModal);
-    });
-
-    document.addEventListener('keydown', event => {
-        if (event.key === 'Escape') {
-            closeProjectModal();
-        }
-    });
-}
-
-function initProjectFilters() {
-    document.querySelectorAll('[data-project-filter]').forEach(button => {
-        button.addEventListener('click', () => {
-            activeProjectFilter = button.dataset.projectFilter;
-
-            document.querySelectorAll('[data-project-filter]').forEach(item => {
-                item.classList.remove('active');
-            });
-
-            button.classList.add('active');
-            renderProjects();
-        });
-    });
-}
-
-function escapeHtml(value = '') {
-    return String(value)
-        .replaceAll('&', '&amp;')
-        .replaceAll('<', '&lt;')
-        .replaceAll('>', '&gt;')
-        .replaceAll('"', '&quot;')
-        .replaceAll("'", '&#039;');
-}
-
-window.addEventListener('load', () => {
-    initProjectFilters();
-    initProjectModal();
-    loadProjects();
-});
