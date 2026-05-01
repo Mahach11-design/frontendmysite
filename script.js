@@ -307,7 +307,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // const API_BASE_URL = 'https://mahach-portfolio-api.onrender.com';
 async function loadProjects() {
     try {
-        const response = await fetch(`${API_BASE_URL}/api/projects`);
+        const response = await fetch(`${https://backendmysite-se57.onrender.com"}/api/projects`);
         const data = await response.json();
         
         allProjects = data;
