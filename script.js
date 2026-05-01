@@ -346,32 +346,32 @@ async function loadProjects() {
 }
 
 function renderProjects() {
-    const grid = document.getElementById('projectsGrid');
-    if (!grid) return;
-
-    const projects = activeProjectFilter === 'all'
-        ? allProjects
-        : allProjects.filter(project => project.type === activeProjectFilter);
-
-    if (!projects.length) {
-        grid.innerHTML = '<div class="projects-empty">Проекты не найдены.</div>';
-        return;
-    }
-
     grid.innerHTML = projects.map(project => `
         <button class="project-card" type="button" onclick="openProjectModal(${project.id})">
             <div class="card-glow"></div>
-            <div class="project-top">
+    
+            <div class="project-card-bg"></div>
+    
+            <div class="project-topline">
                 <span class="project-type">${projectTypeLabels[project.type] || project.type}</span>
-                <span class="project-status status-${project.status}">
+                <span class="project-status ${project.status}">
                     ${projectStatusLabels[project.status] || project.status}
                 </span>
             </div>
-            <h3>${project.title}</h3>
-            <p>${project.shortDescription || project.description || ''}</p>
+    
+            <div class="project-body">
+                <h3 class="project-title">${project.title}</h3>
+                <p class="project-description">
+                    ${project.shortDescription || project.description || ''}
+                </p>
+            </div>
+    
+            <div class="project-bottom">
+                <span class="project-more">Открыть описание</span>
+                <span class="project-arrow">→</span>
+            </div>
         </button>
     `).join('');
-}
 
 function openProjectModal(projectId) {
     const project = allProjects.find(item => String(item.id) === String(projectId));
