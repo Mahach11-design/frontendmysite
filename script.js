@@ -292,7 +292,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Загружаем проекты
     loadProjects();
-    
+
+    document.querySelectorAll('[data-close-modal]').forEach(el => {
+    el.addEventListener('click', closeProjectModal);
+});
     // Показываем страницу с плавным появлением
     document.body.style.opacity = '0';
     setTimeout(() => {
@@ -380,23 +383,35 @@ function renderProjects() {
         </button>
     `).join('');
 }
-function openProjectModal(projectId, e) {
-    if (e) e.preventDefault();
-
+function openProjectModal(projectId) {
     const project = allProjects.find(item => String(item.id) === String(projectId));
     if (!project) return;
 
     const modal = document.getElementById('projectModal');
 
     document.getElementById('modalTitle').textContent = project.title;
-    document.getElementById('modalDescription').textContent =
-        project.fullDescription || project.description || 'Описание не добавлено';
+    document.getElementById('modalDescription').textContent = project.fullDescription || project.description || '';
+    document.getElementById('modalType').textContent = projectTypeLabels[project.type] || project.type;
+    document.getElementById('modalStatus').textContent = projectStatusLabels[project.status] || project.status;
 
-    document.getElementById('modalType').textContent =
-        projectTypeLabels[project.type] || project.type;
+    const stack = document.getElementById('modalStack');
+    stack.innerHTML = (project.stack || []).map(t => `<span class="stack-tag">${t}</span>`).join('');
 
-    document.getElementById('modalStatus').textContent =
-        projectStatusLabels[project.status] || project.status;
+    const link = document.getElementById('modalLink');
+    if (project.link) {
+        link.href = project.link;
+        link.classList.remove('hidden');
+    } else {
+        link.classList.add('hidden');
+    }
 
     modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+}
+function closeProjectModal() {
+    const modal = document.getElementById('projectModal');
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
 }
