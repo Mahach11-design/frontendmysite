@@ -387,4 +387,3 @@ function openProjectModal(projectId) {
 
     alert(project.fullDescription || project.description || 'Описание не добавлено');
 }
-}
