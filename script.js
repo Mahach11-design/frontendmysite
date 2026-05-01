@@ -380,10 +380,23 @@ function renderProjects() {
         </button>
     `).join('');
 }
+function openProjectModal(projectId, e) {
+    if (e) e.preventDefault();
 
-function openProjectModal(projectId) {
     const project = allProjects.find(item => String(item.id) === String(projectId));
     if (!project) return;
 
-    alert(project.fullDescription || project.description || 'Описание не добавлено');
+    const modal = document.getElementById('projectModal');
+
+    document.getElementById('modalTitle').textContent = project.title;
+    document.getElementById('modalDescription').textContent =
+        project.fullDescription || project.description || 'Описание не добавлено';
+
+    document.getElementById('modalType').textContent =
+        projectTypeLabels[project.type] || project.type;
+
+    document.getElementById('modalStatus').textContent =
+        projectStatusLabels[project.status] || project.status;
+
+    modal.classList.add('open');
 }
