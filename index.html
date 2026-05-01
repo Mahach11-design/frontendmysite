@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Developer Portfolio | Contacts</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Анимированный фон -->
+    <div class="particles" id="particles"></div>
+    <div class="grid-overlay"></div>
+    
+    <!-- Главный контейнер -->
+    <div class="container">
+        <!-- Терминальный хедер -->
+        <div class="terminal-header">
+            <div class="terminal-bar">
+                <div class="terminal-buttons">
+                    <span class="btn-close"></span>
+                    <span class="btn-minimize"></span>
+                    <span class="btn-maximize"></span>
+                </div>
+                <div class="terminal-title">developer@portfolio: ~</div>
+            </div>
+            <div class="terminal-content">
+                <div class="terminal-line">
+                    <span class="prompt">❯</span>
+                    <span class="command">cat profile.json</span>
+                </div>
+                <div class="terminal-output">
+                    <span class="json-key">"status"</span>: <span class="json-value">"available"</span>,
+                </div>
+                <div class="terminal-output">
+                    <span class="json-key">"location"</span>: <span class="json-value">"Krasnodar, RU"</span>
+                </div>
+                <div class="terminal-line" style="margin-top: 12px;">
+                    <span class="prompt">❯</span>
+                    <span class="typing-text" id="typingText"></span>
+                    <span class="cursor"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Заголовок -->
+        <div class="hero">
+            <h1 class="name">mahach</h1>
+            <p class="tagline">
+                <span class="bracket">&lt;</span>
+                Full Stack Developer
+                <span class="bracket">/&gt;</span>
+            </p>
+            <div class="status-badge">
+                <span class="status-dot"></span>
+                Open to work
+            </div>
+        </div>
+
+        <!-- Сетка контактов -->
+        <div class="contacts-grid">
+            <!-- Телефон -->
+            <a href="tel:+79891251326" class="contact-card">
+                <div class="card-glow"></div>
+                <div class="contact-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                    </svg>
+                </div>
+                <div class="contact-info">
+                    <div class="contact-label">Phone</div>
+                    <div class="contact-value">+7 989 125 13 26</div>
+                </div>
+                <div class="card-arrow">→</div>
+            </a>
+
+            <!-- VK -->
+            <a href="https://vk.com/muzhaidov11" target="_blank" class="contact-card">
+                <div class="card-glow"></div>
+                <div class="contact-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M15.07 2H8.93C3.33 2 2 3.33 2 8.93v6.14C2 20.67 3.33 22 8.93 22h6.14c5.6 0 6.93-1.33 6.93-6.93V8.93C22 3.33 20.67 2 15.07 2zm3.25 14.14h-1.44c-.55 0-.72-.45-1.71-1.44-0.86-0.82-1.24-0.93-1.45-0.93-0.3 0-0.38 0.08-0.38 0.47v1.32c0 0.35-0.11 0.56-1.04 0.56-1.54 0-3.25-0.93-4.45-2.67-1.81-2.56-2.3-4.49-2.3-4.88 0-0.21 0.08-0.41 0.47-0.41h1.44c0.35 0 0.48 0.16 0.62 0.54 0.69 2.01 1.86 3.78 2.34 3.78 0.18 0 0.26-0.08 0.26-0.54V9.51c-0.06-0.94-0.55-1.02-0.55-1.36 0-0.17 0.14-0.35 0.37-0.35h2.26c0.3 0 0.4 0.16 0.4 0.52v3.6c0 0.3 0.14 0.4 0.22 0.4 0.18 0 0.33-0.1 0.66-0.43 1.02-1.14 1.74-2.9 1.74-2.9 0.1-0.2 0.25-0.41 0.64-0.41h1.44c0.43 0 0.52 0.22 0.43 0.52-0.16 0.75-1.84 3.06-1.84 3.06-0.15 0.24-0.21 0.35 0 0.62 0.15 0.2 0.65 0.64 0.99 1.02 0.61 0.7 1.08 1.29 1.21 1.7 0.12 0.41-0.09 0.62-0.51 0.62z"/>
+                    </svg>
+                </div>
+                <div class="contact-info">
+                    <div class="contact-label">VKontakte</div>
+                    <div class="contact-value">@muzhaidov11</div>
+                </div>
+                <div class="card-arrow">→</div>
+            </a>
+
+            <!-- Telegram -->
+            <a href="https://t.me/myopensourse" target="_blank" class="contact-card">
+                <div class="card-glow"></div>
+                <div class="contact-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69.01-.03.01-.14-.07-.2-.08-.06-.19-.04-.27-.02-.12.02-1.93 1.23-5.45 3.62-.52.36-.99.53-1.42.52-.47-.01-1.37-.26-2.03-.48-.82-.27-1.47-.42-1.42-.88.03-.24.37-.49 1.02-.75 3.99-1.73 6.65-2.87 7.98-3.42 3.8-1.58 4.59-1.86 5.11-1.87.11 0 .37.03.54.17.14.12.18.27.2.38-.01.06.01.24 0 .38z"/>
+                    </svg>
+                </div>
+                <div class="contact-info">
+                    <div class="contact-label">Telegram</div>
+                    <div class="contact-value">@myopensourse</div>
+                </div>
+                <div class="card-arrow">→</div>
+            </a>
+
+            <!-- Email -->
+            <a href="mailto:mahaka01@mail.ru" class="contact-card">
+                <div class="card-glow"></div>
+                <div class="contact-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                        <polyline points="22,6 12,13 2,6"/>
+                    </svg>
+                </div>
+                <div class="contact-info">
+                    <div class="contact-label">Email</div>
+                    <div class="contact-value">mahaka01@mail.ru</div>
+                </div>
+                <div class="card-arrow">→</div>
+            </a>
+
+            <!-- WhatsApp -->
+            <a href="https://wa.me/79891251326" target="_blank" class="contact-card">
+                <div class="card-glow"></div>
+                <div class="contact-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                    </svg>
+                </div>
+                <div class="contact-info">
+                    <div class="contact-label">WhatsApp</div>
+                    <div class="contact-value">+7 989 125 13 26</div>
+                </div>
+                <div class="card-arrow">→</div>
+            </a>
+
+            <!-- GitHub -->
+            <a href="https://github.com/mahach11-design" target="_blank" class="contact-card">
+                <div class="card-glow"></div>
+                <div class="contact-icon">
+                    <svg viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2C6.477 2 2 6.477 2 12c0 4.42 2.865 8.17 6.839 9.49.5.092.682-.217.682-.482 0-.237-.008-.866-.013-1.7-2.782.603-3.369-1.34-3.369-1.34-.454-1.156-1.11-1.463-1.11-1.463-.908-.62.069-.608.069-.608 1.003.07 1.531 1.03 1.531 1.03.892 1.529 2.341 1.087 2.91.831.092-.646.35-1.086.636-1.336-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.029-2.683-.103-.253-.446-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.578 9.578 0 0112 6.836c.85.004 1.705.114 2.504.336 1.909-1.294 2.747-1.025 2.747-1.025.546 1.377.203 2.394.1 2.647.64.699 1.028 1.592 1.028 2.683 0 3.842-2.339 4.687-4.566 4.935.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.743 0 .267.18.578.688.48C19.138 20.167 22 16.418 22 12c0-5.523-4.477-10-10-10z"/>
+                    </svg>
+                </div>
+                <div class="contact-info">
+                    <div class="contact-label">GitHub</div>
+                    <div class="contact-value">@mahach11-design</div>
+                </div>
+                <div class="card-arrow">→</div>
+            </a>
+        </div>
+
+
+        <!-- Проекты -->
+        <section class="projects-section" id="projects">
+            <div class="section-heading">
+                <p class="section-kicker">portfolio.db</p>
+                <h2 class="section-title">Проекты</h2>
+                <p class="section-subtitle">Список проектов загружается с backend на Render. Нажми на карточку, чтобы открыть полное описание.</p>
+            </div>
+
+            <div class="projects-toolbar">
+                <button class="filter-btn active" data-filter="all">Все</button>
+                <button class="filter-btn" data-filter="site">Сайты</button>
+                <button class="filter-btn" data-filter="telegram_bot">Telegram боты</button>
+                <button class="filter-btn" data-filter="script">Скрипты</button>
+            </div>
+
+            <div class="projects-grid" id="projectsGrid">
+                <div class="projects-loading">Загрузка проектов...</div>
+            </div>
+        </section>
+
+        <!-- Модальное окно проекта -->
+        <div class="project-modal" id="projectModal" aria-hidden="true">
+            <div class="modal-backdrop" data-close-modal></div>
+            <article class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+                <button class="modal-close" type="button" data-close-modal aria-label="Закрыть">×</button>
+                <div class="modal-meta">
+                    <span class="project-type" id="modalType"></span>
+                    <span class="project-status" id="modalStatus"></span>
+                </div>
+                <h3 class="modal-title" id="modalTitle"></h3>
+                <p class="modal-description" id="modalDescription"></p>
+                <div class="modal-stack" id="modalStack"></div>
+                <a class="modal-link" id="modalLink" href="#" target="_blank" rel="noopener">Открыть проект →</a>
+            </article>
+        </div>
+
+        <!-- Футер -->
+        <footer class="footer">
+            <div class="code-block">
+                <div class="code-header">
+                    <span class="code-lang">javascript</span>
+                    <span class="code-file">config.js</span>
+                </div>
+                <div class="code-content">
+                    <span class="code-keyword">const</span> <span class="code-variable">developer</span> = {<br>
+                    &nbsp;&nbsp;<span class="code-property">status</span>: <span class="code-string">"open_to_opportunities"</span>,<br>
+                    &nbsp;&nbsp;<span class="code-property">passion</span>: <span class="code-string">"building_cool_stuff"</span>,<br>
+                    &nbsp;&nbsp;<span class="code-property">fuel</span>: <span class="code-string">"coffee"</span> + <span class="code-number">Infinity</span><br>
+                    };
+                </div>
+            </div>
+            <div class="footer-text">
+                <p class="copyright">© 2026 • All rights reserved</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
