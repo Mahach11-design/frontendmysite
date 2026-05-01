@@ -305,19 +305,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // После деплоя backend на Render вставь сюда URL сервиса, например:
 // const API_BASE_URL = 'https://mahach-portfolio-api.onrender.com';
-async function loadProjects() {
-    try {
-        const response = await fetch(`${https://backendmysite-se57.onrender.com"}/api/projects`);
-        const data = await response.json();
-        
-        allProjects = data;
-        renderProjects(data);
-    } catch (error) {
-        console.error('Ошибка загрузки:', error);
-    }
-}
-
-document.addEventListener('DOMContentLoaded', loadProjects);
+const API_BASE_URL = "https://backendmysite-se57.onrender.com";
 
 let allProjects = [];
 let activeProjectFilter = 'all';
@@ -340,6 +328,7 @@ async function loadProjects() {
 
     try {
         const response = await fetch(`${API_BASE_URL}/api/projects`);
+
         if (!response.ok) {
             throw new Error('Backend вернул ошибку');
         }
@@ -370,64 +359,26 @@ function renderProjects() {
     }
 
     grid.innerHTML = projects.map(project => `
-        <article class="project-card" data-project-id="${project.id}" tabindex="0">
+        <button class="project-card" type="button" onclick="openProjectModal(${project.id})">
             <div class="card-glow"></div>
-            <div class="project-topline">
+            <div class="project-top">
                 <span class="project-type">${projectTypeLabels[project.type] || project.type}</span>
-                <span class="project-status ${project.status}">${projectStatusLabels[project.status] || project.status}</span>
+                <span class="project-status status-${project.status}">
+                    ${projectStatusLabels[project.status] || project.status}
+                </span>
             </div>
-            <h3 class="project-title">${escapeHtml(project.title)}</h3>
-            <p class="project-description">${escapeHtml(project.shortDescription || project.description).slice(0, 140)}...</p>
-            <span class="project-more">Подробнее →</span>
-        </article>
+            <h3>${project.title}</h3>
+            <p>${project.shortDescription || project.description || ''}</p>
+        </button>
     `).join('');
-
-    initProjectCards();
-}
-
-function initProjectFilters() {
-    document.querySelectorAll('.filter-btn').forEach(button => {
-        button.addEventListener('click', () => {
-            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
-            activeProjectFilter = button.dataset.filter;
-            renderProjects();
-        });
-    });
-}
-
-function initProjectCards() {
-    document.querySelectorAll('.project-card').forEach(card => {
-        card.addEventListener('mousemove', updateCardGlow);
-        card.addEventListener('click', () => openProjectModal(card.dataset.projectId));
-        card.addEventListener('keydown', (event) => {
-            if (event.key === 'Enter' || event.key === ' ') {
-                event.preventDefault();
-                openProjectModal(card.dataset.projectId);
-            }
-        });
-    });
-}
-
-function updateCardGlow(e) {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const glow = e.currentTarget.querySelector('.card-glow');
-
-    if (glow) {
-        glow.style.background = `radial-gradient(
-            circle at ${x}px ${y}px,
-            rgba(100, 200, 255, 0.2) 0%,
-            transparent 60%
-        )`;
-    }
 }
 
 function openProjectModal(projectId) {
     const project = allProjects.find(item => String(item.id) === String(projectId));
-    const modal = document.getElementById('projectModal');
-    if (!project || !modal) return;
+    if (!project) return;
+
+    alert(project.fullDescription || project.description || 'Описание не добавлено');
+}
 
     document.getElementById('modalType').textContent = projectTypeLabels[project.type] || project.type;
     const status = document.getElementById('modalStatus');
