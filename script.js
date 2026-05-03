@@ -377,6 +377,7 @@ function renderProjects() {
             </div>
     
             <div class="project-bottom">
+                <span class="project-more">Открыть описание</span>
                 <span class="project-arrow">→</span>
             </div>
         </button>
