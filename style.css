@@ -589,10 +589,6 @@ body {
    СЕКЦИЯ ПРОЕКТОВ
    ========================================== */
 
-/* ==========================================
-   СЕКЦИЯ ПРОЕКТОВ — НОВЫЙ ДИЗАЙН
-   ========================================== */
-
 .projects-section {
     position: relative;
     margin: 100px 0 50px;
@@ -866,8 +862,9 @@ body {
 
 .project-more {
     color: var(--accent-primary);
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 800;
+    height: 6px;
 }
 
 .project-arrow {
