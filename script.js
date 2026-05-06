@@ -1,7 +1,4 @@
-// ==========================================
 // ГЕНЕРАЦИЯ ЧАСТИЦ
-// ==========================================
-
 function createParticles() {
     const particlesContainer = document.getElementById('particles');
     const particleCount = window.innerWidth < 768 ? 20 : 35;
@@ -10,16 +7,13 @@ function createParticles() {
         const particle = document.createElement('div');
         particle.className = 'particle';
         
-        // Случайный размер
         const size = Math.random() * 6 + 3;
         particle.style.width = `${size}px`;
         particle.style.height = `${size}px`;
-        
-        // Случайная позиция
+
         particle.style.left = `${Math.random() * 100}%`;
         particle.style.top = `${Math.random() * 100}%`;
         
-        // Случайная задержка и продолжительность анимации
         particle.style.animationDelay = `${Math.random() * 15}s`;
         particle.style.animationDuration = `${Math.random() * 20 + 15}s`;
         
@@ -27,9 +21,8 @@ function createParticles() {
     }
 }
 
-// ==========================================
-// ЭФФЕКТ НАВЕДЕНИЯ МЫШИ (GLOW СЛЕДОВАНИЕ)
-// ==========================================
+// ЭФФЕКТ НАВЕДЕНИЯ МЫШИ
+
 
 function initCardGlowEffect() {
     const cards = document.querySelectorAll('.contact-card');
@@ -52,9 +45,8 @@ function initCardGlowEffect() {
     });
 }
 
-// ==========================================
-// АНИМАЦИЯ ПЕЧАТАНИЯ В ТЕРМИНАЛЕ
-// ==========================================
+
+// АНИМАЦИЯ ПЕЧАТАНИЯ
 
 function initTypingAnimation() {
     const typingElement = document.getElementById('typingText');
@@ -81,35 +73,28 @@ function initTypingAnimation() {
         }
         
         if (!isDeleting && charIndex < currentCommand.length) {
-            // Печатаем символы
             typingElement.textContent = currentCommand.substring(0, charIndex + 1);
             charIndex++;
             setTimeout(type, 100 + Math.random() * 100);
         } else if (isDeleting && charIndex > 0) {
-            // Удаляем символы
             typingElement.textContent = currentCommand.substring(0, charIndex - 1);
             charIndex--;
             setTimeout(type, 50);
         } else if (!isDeleting && charIndex === currentCommand.length) {
-            // Пауза перед удалением
             isPaused = true;
             isDeleting = true;
             setTimeout(type, 2000);
         } else if (isDeleting && charIndex === 0) {
-            // Переход к следующей команде
             isDeleting = false;
             commandIndex = (commandIndex + 1) % commands.length;
             setTimeout(type, 500);
         }
     }
     
-    // Запуск анимации печатания
     setTimeout(type, 1000);
 }
 
-// ==========================================
 // ПАРАЛЛАКС ЭФФЕКТ ПРИ СКРОЛЛЕ
-// ==========================================
 
 function initParallaxEffect() {
     let ticking = false;
@@ -133,9 +118,6 @@ function initParallaxEffect() {
     });
 }
 
-// ==========================================
-// ПЛАВНАЯ ПРОКРУТКА К ЯКОРЯМ
-// ==========================================
 
 function initSmoothScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -153,9 +135,7 @@ function initSmoothScroll() {
     });
 }
 
-// ==========================================
-// АНИМАЦИЯ ПРИ ПОЯВЛЕНИИ ЭЛЕМЕНТОВ
-// ==========================================
+
 
 function initScrollReveal() {
     const observerOptions = {
@@ -172,23 +152,19 @@ function initScrollReveal() {
         });
     }, observerOptions);
     
-    // Наблюдаем за элементами, которые должны появляться при скролле
+  
     const elementsToReveal = document.querySelectorAll('.contact-card, .code-block');
     elementsToReveal.forEach(el => observer.observe(el));
 }
 
-// ==========================================
-// КОПИРОВАНИЕ В БУФЕР ОБМЕНА
-// ==========================================
 
 function initCopyToClipboard() {
     const cards = document.querySelectorAll('.contact-card');
     
     cards.forEach(card => {
-        // Добавляем индикатор копирования (только на десктопе)
+       
         if (window.innerWidth > 768) {
             card.addEventListener('click', (e) => {
-                // Если это ссылка с href, пропускаем копирование
                 if (card.getAttribute('href') && 
                     !card.getAttribute('href').startsWith('tel:') && 
                     !card.getAttribute('href').startsWith('mailto:')) {
@@ -209,7 +185,6 @@ function initCopyToClipboard() {
 }
 
 function showCopyNotification(card) {
-    // Создаем уведомление
     const notification = document.createElement('div');
     notification.textContent = 'Скопировано!';
     notification.style.cssText = `
@@ -231,13 +206,12 @@ function showCopyNotification(card) {
     card.style.position = 'relative';
     card.appendChild(notification);
     
-    // Удаляем уведомление через 2 секунды
     setTimeout(() => {
         notification.remove();
     }, 2000);
 }
 
-// Добавляем CSS анимацию для уведомления
+
 const style = document.createElement('style');
 style.textContent = `
     @keyframes fadeInOut {
@@ -261,27 +235,20 @@ style.textContent = `
 `;
 document.head.appendChild(style);
 
-// ==========================================
-// ОБРАБОТКА ИЗМЕНЕНИЯ РАЗМЕРА ОКНА
-// ==========================================
+
 
 let resizeTimer;
 window.addEventListener('resize', () => {
     clearTimeout(resizeTimer);
     resizeTimer = setTimeout(() => {
-        // Пересоздаем частицы при изменении размера
         const particlesContainer = document.getElementById('particles');
         particlesContainer.innerHTML = '';
         createParticles();
     }, 250);
 });
 
-// ==========================================
-// ИНИЦИАЛИЗАЦИЯ ПРИ ЗАГРУЗКЕ СТРАНИЦЫ
-// ==========================================
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Инициализируем все функции
     createParticles();
     initCardGlowEffect();
     initTypingAnimation();
@@ -290,13 +257,11 @@ document.addEventListener('DOMContentLoaded', () => {
     initScrollReveal();
     initCopyToClipboard();
 
-    // Загружаем проекты
     loadProjects();
 
     document.querySelectorAll('[data-close-modal]').forEach(el => {
     el.addEventListener('click', closeProjectModal);
 });
-    // Показываем страницу с плавным появлением
     document.body.style.opacity = '0';
     setTimeout(() => {
         document.body.style.transition = 'opacity 0.5s ease-in';
@@ -304,9 +269,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 100);
 });
 
-// ==========================================
-// ПРОЕКТЫ С BACKEND НА RENDER
-// ==========================================
 
 const API_BASE_URL = "https://backendmysite-se57.onrender.com";
 
@@ -349,7 +311,7 @@ async function loadProjects() {
 }
 
 function renderProjects() {
-    const grid = document.getElementById('projectsGrid'); // ← обязательно здесь
+    const grid = document.getElementById('projectsGrid');
 
     if (!grid) {
         console.error('projectsGrid не найден в HTML');
