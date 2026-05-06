@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# запрещаем мусор (если есть)
+Disallow: /admin
+Disallow: /api
+
+Sitemap: https://махач.рф/sitemap.xml
