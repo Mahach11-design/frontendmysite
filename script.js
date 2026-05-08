@@ -304,7 +304,7 @@ async function loadProjects() {
         console.error('Ошибка загрузки проектов:', error);
         grid.innerHTML = `
             <div class="projects-error">
-                Не удалось загрузить проекты. Проверь API_BASE_URL в script.js и работу backend на Render.
+                Не удалось загрузить проекты.
             </div>
         `;
     }
