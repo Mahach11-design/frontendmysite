@@ -618,43 +618,6 @@ body {
     margin: 34px 0 36px;
 }
 
-.filter-btn {
-    position: relative;
-    border: 1px solid var(--border-subtle);
-    background: rgba(20, 24, 41, 0.58);
-    color: var(--text-secondary);
-    border-radius: 999px;
-    padding: 12px 20px;
-    cursor: pointer;
-    font: inherit;
-    font-size: 15px;
-    overflow: hidden;
-    backdrop-filter: blur(12px);
-    transition: all var(--transition-medium);
-}
-
-.filter-btn::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(100, 200, 255, 0.18), rgba(168, 85, 247, 0.12));
-    opacity: 0;
-    transition: opacity var(--transition-fast);
-}
-
-.filter-btn:hover,
-.filter-btn.active {
-    color: var(--text-primary);
-    border-color: var(--border-active);
-    transform: translateY(-2px);
-    box-shadow: 0 10px 30px rgba(100, 200, 255, 0.12);
-}
-
-.filter-btn:hover::before,
-.filter-btn.active::before {
-    opacity: 1;
-}
-
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -1063,9 +1026,6 @@ body {
         padding-bottom: 6px;
     }
 
-    .filter-btn {
-        flex: 0 0 auto;
-    }
 
     .project-topline {
         align-items: flex-start;
